@@ -8,7 +8,7 @@ class Pengunjung extends CI_Controller
     {
         $view['title'] = 'Halaman Beranda';
         $view['pageName'] = 'beranda';
-        $this->load->view('pengunjung/index');
+        $this->load->view('pengunjung/index', $view);
     }
 }
 
