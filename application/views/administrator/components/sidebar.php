@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="<?php echo base_url('administrator/bengkelTerdaftar') ?>">
             <i class="fas fa-fw fa-cog"></i>
             <span>Bengkel Terdaftar</span>
         </a>
