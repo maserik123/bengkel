@@ -10,8 +10,8 @@ function btn_import($method, $btn_name)
 <?php
 function get_btn_group1($btn_edit, $btn_delete)
 {
-    $li_btn_edit    = '<button class="btn btn-sm btn-info" title="Edit Data" onClick=' . $btn_edit . '><li class="fa fa-pencil"></li></button>';
-    $li_btn_delete  = '<button class="btn btn-sm btn-danger" title="Hapus Data" onClick=' . $btn_delete . '><li class="fa fa-trash"></li></button>';
+    $li_btn_edit    = '<button class="btn btn-sm btn-info"  style="font-size:12px" title="Edit Data" onClick=' . $btn_edit . '><li class="fa fa-edit"></li></button>';
+    $li_btn_delete  = '<button class="btn btn-sm btn-danger" style="font-size:12px"  title="Hapus Data" onClick=' . $btn_delete . '><li class="fa fa-trash"></li></button>';
     return '<div class="text-center">' . $li_btn_edit . $li_btn_delete . '</div>';
 }
 

@@ -36,12 +36,19 @@
 
     <!-- Pemilik Bengkel -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="<?php echo base_url('administrator/pemilikBengkel') ?>">
             <i class="fas fa-fw fa-cog"></i>
             <span>Pemilik Bengkel</span>
         </a>
     </li>
 
+    <!-- Pemilik Bengkel -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo base_url('administrator/jenisBengkel') ?>">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Jenis Bengkel</span>
+        </a>
+    </li>
 
 
     <!-- Divider -->

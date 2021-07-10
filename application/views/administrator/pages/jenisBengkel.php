@@ -10,7 +10,7 @@
             "responsive": true,
             "dataType": 'JSON',
             "ajax": {
-                "url": "<?php echo site_url('administrator/bengkelTerdaftar/getAllData') ?>",
+                "url": "<?php echo site_url('administrator/jenisBengkel/getAllData') ?>",
                 "type": "POST",
                 "data": {
                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
@@ -48,21 +48,14 @@
             .removeClass('has-success')
             .find('#text-error').remove();
         $.ajax({
-            url: "<?php echo site_url('administrator/bengkelTerdaftar/getById/'); ?>/" + id,
+            url: "<?php echo site_url('administrator/jenisBengkel/getById/'); ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(resp) {
                 data = resp.data
-                $('[name="id_bengkel"]').val(data.id_bengkel);
-                $('[name="nama_bengkel"]').val(data.nama_bengkel);
-                $('[name="alamat"]').val(data.alamat);
-                $('[name="no_hp"]').val(data.no_hp);
-                $('[name="id_pemilik_bengkel"]').val(data.id_pemilik_bengkel);
                 $('[name="id_jenis_bengkel"]').val(data.id_jenis_bengkel);
-                $('[name="layanan"]').val(data.layanan);
-                $('[name="jadwal_bengkel"]').val(data.jadwal_bengkel);
-                $('[name="latitude"]').val(data.latitude);
-                $('[name="longitude"]').val(data.longitude);
+                $('[name="judul"]').val(data.judul);
+                $('[name="keterangan"]').val(data.keterangan);
 
                 $('.reset').hide();
             },
@@ -84,7 +77,7 @@
             },
             function() {
                 $.ajax({
-                    url: "<?php echo site_url('administrator/bengkelTerdaftar/delete'); ?>/" + id,
+                    url: "<?php echo site_url('administrator/jenisBengkel/delete'); ?>/" + id,
                     type: "POST",
                     dataType: "JSON",
                     data: {
@@ -114,9 +107,9 @@
         var csrf_hash = ''
         var url;
         if (save_method == 'add') {
-            url = '<?php echo base_url() ?>administrator/bengkelTerdaftar/addData';
+            url = '<?php echo base_url() ?>administrator/jenisBengkel/addData';
         } else {
-            url = '<?php echo base_url() ?>administrator/bengkelTerdaftar/update';
+            url = '<?php echo base_url() ?>administrator/jenisBengkel/update';
         }
         swal({
                 title: "Apakah anda sudah yakin ?",
@@ -190,15 +183,8 @@
                     <thead>
                         <tr>
                             <th style="font-size: 12px;">#</th>
-                            <th style="font-size: 12px;">Nama Bengkel</th>
-                            <th style="font-size: 12px;">Alamat</th>
-                            <th style="font-size: 12px;">No Hp</th>
-                            <th style="font-size: 12px;">Pemilik Bengkel</th>
                             <th style="font-size: 12px;">Jenis Bengkel</th>
-                            <th style="font-size: 12px;">Layanan</th>
-                            <th style="font-size: 12px;">Jadwal Bengkel</th>
-                            <th style="font-size: 12px;">Latitude</th>
-                            <th style="font-size: 12px;">Longitude</th>
+                            <th style="font-size: 12px;">Keterangan</th>
                             <th style="font-size: 12px;">Tools</th>
                         </tr>
                     </thead>
@@ -217,48 +203,17 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <?php echo form_open('', array('id' => 'form_inputan', 'class' => 'user', 'method' => 'post')); ?>
-                <input type="hidden" id="id_bengkel" name="id_bengkel">
+                <input type="hidden" id="id_jenis_bengkel" name="id_jenis_bengkel">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <small for="">Nama Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="nama_bengkel" name="nama_bengkel" placeholder="Nama Bengkel">
+                                <small for="">Nama Jenis Bengkel</small>
+                                <input type="text" class="form-control form-control-user" id="judul" name="judul" placeholder="Jenis Bengkel">
                             </div>
                             <div class="form-group">
-                                <small for="">Alamat Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat">
-                            </div>
-                            <div class="form-group">
-                                <small for="">No Hp</small>
-                                <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" placeholder="No Hp">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Pemilik Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="id_pemilik_bengkel" name="id_pemilik_bengkel" placeholder="Pemilik Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Jenis Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="id_jenis_bengkel" name="id_jenis_bengkel" placeholder="Jenis Bengkel">
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <small for="">Layanan Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="layanan" name="layanan" placeholder="Layanan Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Jadwal Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="jadwal_bengkel" name="jadwal_bengkel" placeholder="Jadwal Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Latitude Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="latitude" name="latitude" placeholder="Latitude Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Longitude Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="longitude" name="longitude" placeholder="Longitude Bengkel">
+                                <small for="">Keterangan Bengkel</small>
+                                <input type="text" class="form-control form-control-user" id="keterangan" name="keterangan" placeholder="Keterangan">
                             </div>
                         </div>
                     </div>

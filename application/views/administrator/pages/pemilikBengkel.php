@@ -10,7 +10,7 @@
             "responsive": true,
             "dataType": 'JSON',
             "ajax": {
-                "url": "<?php echo site_url('administrator/bengkelTerdaftar/getAllData') ?>",
+                "url": "<?php echo site_url('administrator/pemilikBengkel/getAllData') ?>",
                 "type": "POST",
                 "data": {
                     '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
@@ -48,22 +48,16 @@
             .removeClass('has-success')
             .find('#text-error').remove();
         $.ajax({
-            url: "<?php echo site_url('administrator/bengkelTerdaftar/getById/'); ?>/" + id,
+            url: "<?php echo site_url('administrator/pemilikBengkel/getById/'); ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(resp) {
                 data = resp.data
-                $('[name="id_bengkel"]').val(data.id_bengkel);
-                $('[name="nama_bengkel"]').val(data.nama_bengkel);
+                $('[name="id_pemilik_bengkel"]').val(data.id_pemilik_bengkel);
+                $('[name="nama_pemilik"]').val(data.nama_pemilik);
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="no_hp"]').val(data.no_hp);
-                $('[name="id_pemilik_bengkel"]').val(data.id_pemilik_bengkel);
-                $('[name="id_jenis_bengkel"]').val(data.id_jenis_bengkel);
-                $('[name="layanan"]').val(data.layanan);
-                $('[name="jadwal_bengkel"]').val(data.jadwal_bengkel);
-                $('[name="latitude"]').val(data.latitude);
-                $('[name="longitude"]').val(data.longitude);
-
+                $('[name="email"]').val(data.email);
                 $('.reset').hide();
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -84,7 +78,7 @@
             },
             function() {
                 $.ajax({
-                    url: "<?php echo site_url('administrator/bengkelTerdaftar/delete'); ?>/" + id,
+                    url: "<?php echo site_url('administrator/pemilikBengkel/delete'); ?>/" + id,
                     type: "POST",
                     dataType: "JSON",
                     data: {
@@ -114,9 +108,9 @@
         var csrf_hash = ''
         var url;
         if (save_method == 'add') {
-            url = '<?php echo base_url() ?>administrator/bengkelTerdaftar/addData';
+            url = '<?php echo base_url() ?>administrator/pemilikBengkel/addData';
         } else {
-            url = '<?php echo base_url() ?>administrator/bengkelTerdaftar/update';
+            url = '<?php echo base_url() ?>administrator/pemilikBengkel/update';
         }
         swal({
                 title: "Apakah anda sudah yakin ?",
@@ -190,15 +184,10 @@
                     <thead>
                         <tr>
                             <th style="font-size: 12px;">#</th>
-                            <th style="font-size: 12px;">Nama Bengkel</th>
+                            <th style="font-size: 12px;">Nama Pemilik</th>
                             <th style="font-size: 12px;">Alamat</th>
                             <th style="font-size: 12px;">No Hp</th>
-                            <th style="font-size: 12px;">Pemilik Bengkel</th>
-                            <th style="font-size: 12px;">Jenis Bengkel</th>
-                            <th style="font-size: 12px;">Layanan</th>
-                            <th style="font-size: 12px;">Jadwal Bengkel</th>
-                            <th style="font-size: 12px;">Latitude</th>
-                            <th style="font-size: 12px;">Longitude</th>
+                            <th style="font-size: 12px;">Email</th>
                             <th style="font-size: 12px;">Tools</th>
                         </tr>
                     </thead>
@@ -213,56 +202,32 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title"><i class="fa fa-table"></i> Daftar Bengkel</h6>
+                    <h6 class="modal-title"><i class="fa fa-table"></i> Pemilik Bengkel</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <?php echo form_open('', array('id' => 'form_inputan', 'class' => 'user', 'method' => 'post')); ?>
-                <input type="hidden" id="id_bengkel" name="id_bengkel">
+                <input type="hidden" id="id_pemilik_bengkel" name="id_pemilik_bengkel">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <small for="">Nama Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="nama_bengkel" name="nama_bengkel" placeholder="Nama Bengkel">
+                                <small for="">Nama Pemilik</small>
+                                <input type="text" class="form-control form-control-user" id="nama_pemilik" name="nama_pemilik" placeholder="Nama Bengkel">
                             </div>
                             <div class="form-group">
-                                <small for="">Alamat Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat">
+                                <small for="">Alamat</small>
+                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Pemilik Bengkel">
                             </div>
                             <div class="form-group">
-                                <small for="">No Hp</small>
-                                <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" placeholder="No Hp">
+                                <small for="">No HP Pemilik</small>
+                                <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" placeholder="Alamat">
                             </div>
                             <div class="form-group">
-                                <small for="">Pemilik Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="id_pemilik_bengkel" name="id_pemilik_bengkel" placeholder="Pemilik Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Jenis Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="id_jenis_bengkel" name="id_jenis_bengkel" placeholder="Jenis Bengkel">
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <small for="">Layanan Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="layanan" name="layanan" placeholder="Layanan Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Jadwal Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="jadwal_bengkel" name="jadwal_bengkel" placeholder="Jadwal Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Latitude Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="latitude" name="latitude" placeholder="Latitude Bengkel">
-                            </div>
-                            <div class="form-group">
-                                <small for="">Longitude Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="longitude" name="longitude" placeholder="Longitude Bengkel">
+                                <small for="">Email</small>
+                                <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="No Hp">
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
