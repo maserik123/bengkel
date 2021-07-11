@@ -196,7 +196,8 @@
                             <th style="font-size: 12px;">Pemilik Bengkel</th>
                             <th style="font-size: 12px;">Jenis Bengkel</th>
                             <th style="font-size: 12px;">Layanan</th>
-                            <th style="font-size: 12px;">Jadwal Bengkel</th>
+                            <th style="font-size: 12px;">Jadwal Buka</th>
+                            <th style="font-size: 12px;">Jadwal Tutup</th>
                             <th style="font-size: 12px;">Latitude</th>
                             <th style="font-size: 12px;">Longitude</th>
                             <th style="font-size: 12px;">Tools</th>
@@ -249,8 +250,12 @@
                                 <input type="text" class="form-control form-control-user" id="layanan" name="layanan" placeholder="Layanan Bengkel">
                             </div>
                             <div class="form-group">
-                                <small for="">Jadwal Bengkel</small>
-                                <input type="text" class="form-control form-control-user" id="jadwal_bengkel" name="jadwal_bengkel" placeholder="Jadwal Bengkel">
+                                <small for="">Jadwal Buka</small>
+                                <input type="time" class="form-control form-control-user" id="jadwal_buka" name="jadwal_buka" placeholder="Jadwal Bengkel">
+                            </div>
+                            <div class="form-group">
+                                <small for="">Jadwal Tutup</small>
+                                <input type="time" class="form-control form-control-user" id="jadwal_tutup" name="jadwal_tutup" placeholder="Jadwal Bengkel">
                             </div>
                             <div class="form-group">
                                 <small for="">Latitude Bengkel</small>

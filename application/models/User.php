@@ -19,6 +19,15 @@ class User extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function cekByEmailUserNamePhone($email, $phone)
+    {
+        $this->db->select('email, phone_number ');
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $this->db->where('phone_number', $phone);
+        return $this->db->get()->row();
+    }
+
     function get_all_data_ajax()
     {
         $this->datatables->select('id, first_name, last_name, username, address,phone_number,role,id_unit,address');

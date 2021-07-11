@@ -28,6 +28,15 @@ class PemilikBengkel_model extends CI_Model
         return $this->db->result();
     }
 
+    public function getPemilikBengkelByIdUser($id_user)
+    {
+        $this->db->select('*');
+        $this->db->from('pemilik_bengkel');
+        $this->db->order_by('id_pemilik_bengkel');
+        $this->db->where('id_users', $id_user);
+        return $this->db->get()->result();
+    }
+
     public function addData($data)
     {
         $this->db->insert('pemilik_bengkel', $data);

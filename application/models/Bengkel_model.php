@@ -6,10 +6,20 @@ class Bengkel_model extends CI_Model
 
     function getDatatableBengkel()
     {
-        $this->datatables->select('b.id_bengkel, b.nama_bengkel, b.alamat, b.no_hp, pb.nama_pemilik, jb.judul, b.layanan, b.jadwal_bengkel, b.latitude, b.longitude, b.longitude');
+        $this->datatables->select('b.id_bengkel, b.nama_bengkel, b.alamat, b.no_hp, pb.nama_pemilik, jb.judul, b.layanan, b.jadwal_buka, b.jadwal_tutup, b.latitude, b.longitude, b.longitude');
         $this->datatables->from('bengkel b');
         $this->datatables->join('jenis_bengkel jb', 'jb.id_jenis_bengkel = b.id_jenis_bengkel', 'left');
         $this->datatables->join('pemilik_bengkel pb', 'pb.id_pemilik_bengkel = b.id_pemilik_bengkel', 'left');
+        return $this->datatables->generate();
+    }
+
+    function getDataBengkelByIdPemilik($id_user)
+    {
+        $this->datatables->select('b.id_bengkel, b.nama_bengkel, b.alamat, b.no_hp, pb.nama_pemilik, jb.judul, b.layanan, b.jadwal_buka, b.jadwal_tutup, b.latitude, b.longitude, b.longitude');
+        $this->datatables->from('bengkel b');
+        $this->datatables->join('jenis_bengkel jb', 'jb.id_jenis_bengkel = b.id_jenis_bengkel', 'left');
+        $this->datatables->join('pemilik_bengkel pb', 'pb.id_pemilik_bengkel = b.id_pemilik_bengkel', 'left');
+        $this->datatables->where('pb.id_users', $id_user);
         return $this->datatables->generate();
     }
 

@@ -26,7 +26,7 @@
             </div>
 
             <li class="">
-                <a href="form-elements-component.html" class="btn btn-default">
+                <a href="<?php echo base_url('owner') ?>" class="btn btn-default">
                     <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
                     <span class="pcoded-mtext" data-i18n="nav.form-components.main">Daftarkan Bengkel</span>
                     <span class="pcoded-mcaret"></span>

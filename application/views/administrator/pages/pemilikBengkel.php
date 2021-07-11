@@ -212,19 +212,28 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <small for="">Nama Pemilik</small>
-                                <input type="text" class="form-control form-control-user" id="nama_pemilik" name="nama_pemilik" placeholder="Nama Bengkel">
+                                <input type="text" class="form-control form-control-user" id="nama_pemilik" name="nama_pemilik" placeholder="Nama Pemilik">
                             </div>
                             <div class="form-group">
                                 <small for="">Alamat</small>
-                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Pemilik Bengkel">
+                                <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat">
                             </div>
                             <div class="form-group">
                                 <small for="">No HP Pemilik</small>
-                                <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" placeholder="Alamat">
+                                <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp" placeholder="No Hp">
                             </div>
                             <div class="form-group">
                                 <small for="">Email</small>
-                                <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="No Hp">
+                                <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <small for="">Pilih Pengguna</small>
+                                <select name="id_users" id="id_users" class="form-control" placeholder="Pilih Pengguna">
+                                    <option value="">Pilih Pengguna</option>
+                                    <?php foreach ($getAllDataUser as $row) { ?>
+                                        <option value="<?php echo $row->id; ?>"><?php echo $row->first_name . ' ' . $row->last_name; ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                     </div>
