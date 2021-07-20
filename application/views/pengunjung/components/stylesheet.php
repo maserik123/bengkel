@@ -18,3 +18,9 @@
  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
  <!-- Style.css -->
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('components_pengunjung/'); ?>assets/css/style.css">
+
+ <!-- Open Layers-->
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('components_pengunjung/'); ?>assets/css/ol.css">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('components_pengunjung/'); ?>assets/css/map.css">
+
+ <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />-->

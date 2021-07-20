@@ -10,6 +10,14 @@ class Pengunjung extends CI_Controller
         $view['pageName'] = 'beranda';
         $this->load->view('pengunjung/index', $view);
     }
+
+
+    public function find()
+    {
+        $view['title'] = 'Halaman Cari Bengkel';
+        $view['pageName'] = 'cari';
+        $this->load->view('pengunjung/index', $view);
+    }
 }
 
 /* End of file pengunjung.php */
