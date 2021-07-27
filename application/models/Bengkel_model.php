@@ -34,10 +34,11 @@ class Bengkel_model extends CI_Model
     public function getAllBengkel()
     {
         $this->db->select('*');
-        $this->db->from('bengkel');
+        $this->db->from('bengkel b');
+        $this->db->join('jenis_bengkel jb', 'jb.id_jenis_bengkel = b.id_jenis_bengkel', 'left');
+        $this->db->join('pemilik_bengkel pb', 'pb.id_pemilik_bengkel = b.id_pemilik_bengkel', 'left');
         $this->db->order_by('id_bengkel', 'desc');
-        $this->db->get();
-        return $this->db->result();
+        return $this->db->get()->result_array();
     }
 
     public function addData($data)

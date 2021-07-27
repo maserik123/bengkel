@@ -1,26 +1,63 @@
-/*var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(mymap);*/
-
 var map = new ol.Map({
     target: 'map',
     layers: [
       new ol.layer.Tile({
         source: new ol.source.OSM()
-      })
+      }),
     ],
     view: new ol.View({
       center: ol.proj.fromLonLat([101.438309, 0.510440]),
       zoom:14
     })
   });
+
+
+  var fill = new ol.style.Fill({
+    color: 'rgba(210, 122, 167,0.2)'
+  });
+
+  var stroke = new ol.style.Stroke({
+    color: '#B40404',
+    width: 2
+  });
+
+  var pointStyles = new ol.style.Style({
+      image: new ol.style.Circle({
+        fill: fill,
+        stroke: stroke,
+        radius: 5
+      }),
+      fill: fill,
+      stroke: stroke
+    });
+
+var vectorSource = new ol.source.Vector({
+  format: new ol.format.GeoJSON(),
+});
+
+var vectorPoints = new ol.layer.Vector({
+    source: vectorSource,
+    style: pointStyles
+  });
+
+
+  // var marker = new ol.Feature({
+//   geometry: new ol.geom.Point([vectorSource])
+// })
+
+map.addLayer(vectorPoints);
+
+$.ajax({
+  type:"GET",
+  url:"Pengunjung/datageojson",
+  dataType:"json",
+  success:function(data){
+    var geojsonformat = new ol.format.GeoJSON()
+
+    var features = geojsonformat.readFeatures(data);
+    vectorSource.addFeatures(features);
+  }
+});
 
 
 /*function initMap(){

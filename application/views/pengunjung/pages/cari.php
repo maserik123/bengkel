@@ -28,7 +28,6 @@
               <!-- Page-body start -->
               <div class="page-body">
                   <div class="row">
-
                       <!--  sale analytics start -->
                       <div class="col-xl-12 col-md-12">
                           <div class="card">
