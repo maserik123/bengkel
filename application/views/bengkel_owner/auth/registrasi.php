@@ -130,20 +130,13 @@
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="address" placeholder="Alamat">
                                 </div>
-                                <!-- <div class="col-sm-6">
-                                    <select name="gender" id="gender" class="form-control">
-                                        <option value="">Pilih Jenis Kelamin</option>
-                                        <option value="Male">Laki-laki</option>
-                                        <option value="Female">Perempuan</option>
-                                    </select>
-                                </div> -->
+
                             </div>
                             <hr>
                             <a href="<?php echo base_url('AuthOwner') ?>" class="btn btn-danger btn-user">
                                 <i class="fa fa-user"></i> Login
                             </a>
                             <button type="button" onclick="simpan()" class="btn btn-primary"><span class="icon-save"></span> Simpan</button>
-
                             <?php echo form_close(); ?>
                             <hr>
 
